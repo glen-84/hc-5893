@@ -1,0 +1,20 @@
+services:
+    hc-5893-postgres:
+        image: postgres:16.1
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres
+        networks: [hc-5893]
+        ports: [5432:5432]
+        volumes:
+            - type: volume
+              source: postgres-data
+              target: /var/lib/postgresql/data
+
+networks:
+    hc-5893:
+        name: hc-5893
+
+volumes:
+    postgres-data:
